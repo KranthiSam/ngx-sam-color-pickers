@@ -4,13 +4,15 @@
     position: relative;
     margin: 0.2em;
 }
-.hue-picker-wrapper{
+
+.alpha-picker-wrapper{
     min-height: 20px;
     min-width: 50px;
     width: 100%;
     &.circle{
+        border-radius: 0.6em;
         height: calc(1.2em + 4px);
-        .hue-strip{
+        .alpha-strip{
             border-radius: 0.6em;
             height: 0.6em;
             transform: translateY(calc(50% + 2px));
@@ -27,7 +29,7 @@
         position: absolute;
         top: 0;
         bottom: 0;
-        .hue-strip{
+        .alpha-strip{
             height: calc(100% - 0.8em);
             transform: translateY(0.4em);
         }
@@ -39,10 +41,19 @@
             }
         }
     }
-    .hue-strip{
+    .alpha-strip{
         width: 100%;
-        background: linear-gradient(to right,hsl(0,100%,50%),hsl(60,100%,50%),hsl(120,100%,50%),hsl(180,100%,50%),hsl(240,100%,50%),hsl(300,100%,50%),hsl(360,100%,50%));
+        background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAADFJREFUOE9jZGBgEGHAD97gk2YcNYBhmIQBgWSAP52AwoAQwJvQRg1gACckQoC2gQgAIF8IscwEtKYAAAAASUVORK5CYII=") left center;
+        .alpha-mask{
+            position: absolute;
+            inset: 0px;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
     }
+    
     .slider-thumb-wrapper{
         position: absolute;
         top: 0;

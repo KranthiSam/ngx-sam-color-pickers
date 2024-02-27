@@ -4,7 +4,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ColorHueComponent } from './color-hue/color-hue.component';
-import { NgxSamColorPickersModule } from "../../projects/ngx-sam-color-pickers/src/lib/ngx-sam-color-pickers.module";
+import { NgxSamColorPickersModule } from 'ngx-sam-color-pickers';
+
 
 @NgModule({
     declarations: [
@@ -16,7 +17,7 @@ import { NgxSamColorPickersModule } from "../../projects/ngx-sam-color-pickers/s
     imports: [
         BrowserModule,
         AppRoutingModule,
-        NgxSamColorPickersModule
+        NgxSamColorPickersModule,
     ]
 })
 export class AppModule { }
