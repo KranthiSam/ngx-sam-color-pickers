@@ -1,3 +1,4 @@
 <div class="hue-alpha-picker-wrapper" [class]="thumbStyle">
-    <hue-picker thumbStyle="circle" color="#0071ff" (onColorChange)="colorChanged($event)"></hue-picker>
+    <hue-picker thumbStyle="tube" [color]="hueValue" (onColorChange)="colorChanged($event)"></hue-picker>
+    <alpha-picker thumbStyle="tube" [color]="hueValue" [alpha]="alphaValue" (onAlphaChange)="alphaChanged($event)"></alpha-picker>
 </div>

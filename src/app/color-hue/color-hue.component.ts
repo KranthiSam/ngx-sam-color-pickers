@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ALPHA, COLOR_CONFIG, COLOR_TYPE, ColorType, RGB } from 'ngx-sam-color-pickers'; 
+import { ALPHA, COLOR_CONFIG, COLOR_TYPE, ColorType, RGB, RGBA } from 'ngx-sam-color-pickers'; 
 
 @Component({
   selector: 'app-color-hue',
@@ -19,6 +19,7 @@ export class ColorHueComponent implements OnInit {
 
   color: RGB = {r: 140, g: 255, b: 0};
   alpha: ALPHA = 10;
+  rgba: RGBA = {...this.color, a: this.alpha};
 
   constructor() { }
 

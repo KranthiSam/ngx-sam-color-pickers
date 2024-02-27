@@ -1,6 +1,6 @@
 import { Component, ElementRef, EventEmitter, Inject, Input, NgZone, OnInit, Output, ViewChild } from '@angular/core';
-import { CMYK, ColorType, HEX, HSL, HSV, RGB, cmykToHSL, hexToHsl, hslToCmyk, hslToHex, hslToHsv, hslToRgb, hsvToHsl, rgbToCmyk, rgbToHex, rgbToHsl, rgbToHsv } from '../util';
-import { COLOR_CONFIG, COLOR_TYPE, colorPickerDefaultOptions } from '../color-picker';
+import { COLOR_CONFIG, COLOR_TYPE, ColorType, RGB, colorPickerDefaultOptions } from '../color-picker';
+import { hslToHex, rgbToHsl, hslToRgb } from '../util';
 
 @Component({
   selector: 'hue-picker',
@@ -10,7 +10,7 @@ import { COLOR_CONFIG, COLOR_TYPE, colorPickerDefaultOptions } from '../color-pi
 export class HuePicker implements OnInit {
 
 
-  huePercentage: number = 0;
+  huePercentage: number = 50;
 
   inputType: COLOR_TYPE = COLOR_TYPE.COLOR_RGB;
   outputType: COLOR_TYPE = COLOR_TYPE.COLOR_RGB;
@@ -22,6 +22,7 @@ export class HuePicker implements OnInit {
   }
 
   @Output() onColorChange = new EventEmitter<RGB>();
+  
   sliderThumbRef: ElementRef<any> | undefined;
   hueStripRef: ElementRef<any> | undefined;
   sliderThumbContainerRef: ElementRef<any> | undefined;

@@ -1,11 +1,10 @@
 import { Component, EventEmitter, Inject, Input, NgZone, OnInit, Output } from '@angular/core';
-import { CMYK, ColorType, HEX, HSL, HSV, RGB, cmykToHSL, hexToHsl, hsvToHsl, rgbToHsl } from '../util';
-import { COLOR_CONFIG, COLOR_TYPE, colorPickerDefaultOptions } from '../color-picker';
+import { ALPHA, COLOR_CONFIG, COLOR_TYPE, ColorType, RGB, RGBA, colorPickerDefaultOptions } from '../color-picker';
 
 @Component({
   selector: 'hue-alpha-picker',
   templateUrl: './hue-alpha-picker.component.html',
-  styleUrls: ['./hue-alpha-picker.component.css']
+  styleUrls: ['./hue-alpha-picker.component.less']
 })
 export class HueAlphaPicker implements OnInit {
 
@@ -14,12 +13,18 @@ export class HueAlphaPicker implements OnInit {
   outputType: COLOR_TYPE = COLOR_TYPE.COLOR_RGB;
 
   @Input() thumbStyle: ("circle"| "tube") = "circle"; 
+  alphaValue: ALPHA = 50;
+  hueValue: RGB = {
+    r: 0,
+    g: 255,
+    b: 255
+  };
   @Input() 
-  set color(_color: ColorType){
+  set color(_color: RGBA){
     this.setInputData(_color);
   }
 
-  @Output() onColorChange = new EventEmitter<ColorType>();
+  @Output() onColorChange = new EventEmitter<RGBA>();
 
   
   constructor(private zone: NgZone, @Inject(COLOR_CONFIG) colorConfig: colorPickerDefaultOptions) { 
@@ -31,10 +36,22 @@ export class HueAlphaPicker implements OnInit {
   ngOnInit(): void {
   }
 
-  setInputData(color: ColorType){
-    
+  setInputData(color: RGBA){
+    this.hueValue = {
+      r: color.r,
+      g: color.g,
+      b: color.b
+    }
+    this.alphaValue = color.a;
   }
-  colorChanged(evt: ColorType){
-    this.onColorChange.emit(evt);
+  alphaChanged(evt: ALPHA){
+    this.alphaValue = evt;
+    let rgba: RGBA = {...this.hueValue, a: this.alphaValue / 100}
+    this.onColorChange.emit(rgba);
+  }
+  colorChanged(evt: RGB){
+    this.hueValue = evt;
+    let rgba: RGBA = {...this.hueValue, a: this.alphaValue / 100}
+    this.onColorChange.emit(rgba);
   }
 }

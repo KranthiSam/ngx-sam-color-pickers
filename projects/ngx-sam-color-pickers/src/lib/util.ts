@@ -1,46 +1,5 @@
-/**
- * Represents an HSL color model
- */
-export interface HSL {
-    h: number; // Hue (0 - 360)
-    s: number; // Saturation (0 - 100%)
-    l: number; // Lightness (0 - 100%)
-}
+import { HSL, RGB, HEX, CMYK, HSV } from "./color-picker";
 
-/**
- * Represents an HSV color model
- */
-export interface HSV {
-    h: number; // Hue (0 - 360)
-    s: number; // Saturation (0 - 100%)
-    v: number; // Value (0 - 100%)
-}
-
-/**
- * Represents an RGB color model
- */
-export interface RGB {
-    r: number; // Red (0 - 255)
-    g: number; // Green (0 - 255)
-    b: number; // Blue (0 - 255)
-}
-
-/**
- * Represents a CMYK color model
- */
-export interface CMYK {
-    c: number; // Cyan (0 - 100%)
-    m: number; // Magenta (0 - 100%)
-    y: number; // Yellow (0 - 100%)
-    k: number; // Key (black) (0 - 100%)
-}
-
-
-export type HEX = string;
-
-export type ALPHA = number;
-
-export type ColorType = HSL|HSV|RGB|HEX|CMYK;
 
 /**
  * Converts HSL to RGB
@@ -196,7 +155,9 @@ export function rgbToHsl(rgb: RGB): HSL {
     const l = (max + min) / 2;
 
     const s = delta === 0 ? 0 : delta / (1 - Math.abs(2 * l - 1));
-
+    if(h < 0){
+        h = 360 + h;
+    }
     return {
         h: h,
         s: s * 100,

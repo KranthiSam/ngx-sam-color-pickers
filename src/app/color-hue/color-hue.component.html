@@ -1,5 +1,7 @@
+<!-- 
 <hue-picker thumbStyle="tube" [color]="color" (onColorChange)="colorChanged($event)" style="height: 80px"></hue-picker>
+<alpha-picker thumbStyle="tube" [color]="color" [alpha]="alpha" (onAlphaChange)="alphaChanged($event)" style="height: 80px"></alpha-picker> -->
 
-<!-- <hue-alpha-picker thumbStyle="circle" color="#0071ff" (onColorChange)="colorChanged($event)"></hue-alpha-picker> -->
-<alpha-picker thumbStyle="tube" [color]="color" [alpha]="alpha" (onColorChange)="alphaChanged($event)" style="height: 80px"></alpha-picker>
+<hue-alpha-picker  thumbStyle="tube" [color]="rgba" (onColorChange)="colorChanged($event)" style="height: 80px">
 
+</hue-alpha-picker>

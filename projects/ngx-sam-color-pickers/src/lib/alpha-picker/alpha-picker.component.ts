@@ -1,6 +1,6 @@
 import { Component, ElementRef, EventEmitter, Inject, Input, NgZone, OnInit, Output, ViewChild } from '@angular/core';
-import { COLOR_TYPE, COLOR_CONFIG, colorPickerDefaultOptions } from '../color-picker';
-import { ColorType, hslToHex, HSL, cmykToHSL, CMYK, hexToHsl, HEX, hsvToHsl, HSV, rgbToHsl, RGB, hslToCmyk, hslToHsv, hslToRgb, ALPHA } from '../util';
+import { COLOR_TYPE, COLOR_CONFIG, colorPickerDefaultOptions, ALPHA, ColorType, RGB } from '../color-picker';
+import { hslToRgb, rgbToHsl } from '../util';
 
 @Component({
   selector: 'alpha-picker',
@@ -9,8 +9,8 @@ import { ColorType, hslToHex, HSL, cmykToHSL, CMYK, hexToHsl, HEX, hsvToHsl, HSV
 })
 export class AlphaPicker implements OnInit {
   
-  huePercentage: number = 0;
-  alphaPercentage: number = 0;
+  huePercentage: number = 50;
+  alphaPercentage: ALPHA = 50;
 
 
   inputType: COLOR_TYPE = COLOR_TYPE.COLOR_RGB;
@@ -22,11 +22,11 @@ export class AlphaPicker implements OnInit {
     this.setInputAlpha(_alpha);
   }
   @Input() 
-  set color(_color: ColorType){
+  set color(_color: RGB){
     this.setInputHue(_color);
   }
 
-  @Output() onColorChange = new EventEmitter<ALPHA>();
+  @Output() onAlphaChange = new EventEmitter<ALPHA>();
   sliderThumbRef: ElementRef<any> | undefined;
   alphaStripRef: ElementRef<any> | undefined;
   sliderThumbContainerRef: ElementRef<any> | undefined;
@@ -139,7 +139,7 @@ export class AlphaPicker implements OnInit {
   }
   emitOutput(){
     const alphaValue = this.alphaPercentage;
-    this.onColorChange.emit(alphaValue); 
+    this.onAlphaChange.emit(alphaValue); 
   }
   setThumbPosition(_color: ColorType) {
 
