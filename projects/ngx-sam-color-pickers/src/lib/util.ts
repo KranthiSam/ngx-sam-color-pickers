@@ -288,3 +288,12 @@ export function hsvToHsl(hsv: HSV): HSL {
         l: l * 100
     };
 }
+
+export function trueOffsetLeft(ele: any){
+    let left = 0;
+    while(ele){
+        left += ele.offsetLeft;
+        ele = ele.offsetParent;
+    }
+    return left;
+}

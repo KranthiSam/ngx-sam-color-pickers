@@ -1,4 +1,4 @@
 <div class="hue-alpha-picker-wrapper" [class]="thumbStyle">
-    <hue-picker thumbStyle="tube" [color]="hueValue" (onColorChange)="colorChanged($event)"></hue-picker>
-    <alpha-picker thumbStyle="tube" [color]="hueValue" [alpha]="alphaValue" (onAlphaChange)="alphaChanged($event)"></alpha-picker>
+    <ngx-hue-picker [thumbStyle]="thumbStyle" [color]="hueValue" (onColorChange)="colorChanged($event)"></ngx-hue-picker>
+    <ngx-alpha-picker [thumbStyle]="thumbStyle" [color]="hueValue" [alpha]="alphaValue" (onAlphaChange)="alphaChanged($event)"></ngx-alpha-picker>
 </div>

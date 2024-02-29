@@ -2,7 +2,7 @@ import { Component, EventEmitter, Inject, Input, NgZone, OnInit, Output } from '
 import { ALPHA, COLOR_CONFIG, COLOR_TYPE, ColorType, RGB, RGBA, colorPickerDefaultOptions } from '../color-picker';
 
 @Component({
-  selector: 'hue-alpha-picker',
+  selector: 'ngx-hue-alpha-picker',
   templateUrl: './hue-alpha-picker.component.html',
   styleUrls: ['./hue-alpha-picker.component.less']
 })
@@ -12,7 +12,7 @@ export class HueAlphaPicker implements OnInit {
   inputType: COLOR_TYPE = COLOR_TYPE.COLOR_RGB;
   outputType: COLOR_TYPE = COLOR_TYPE.COLOR_RGB;
 
-  @Input() thumbStyle: ("circle"| "tube") = "circle"; 
+  @Input() thumbStyle: ("circle"| "tube" | "dot") = "circle"; 
   alphaValue: ALPHA = 50;
   hueValue: RGB = {
     r: 0,
